@@ -1,0 +1,47 @@
+-- vim: ft=haskell
+Config { font = "xft:Migu 1M:size=12"
+       , bgColor = "#1c1c1c"
+       , fgColor = "#404040"
+       , position = TopSize C 100 33
+       -- , position = Static { xpos = 37 , ypos = 0, width = 1845, height = 18 }
+       , lowerOnStart = False
+       , overrideRedirect = False
+       , border = BottomBM 0
+       , borderColor = "#4e4e4e"
+       , commands = [
+
+    
+                      Run MultiCpu        [ "-t"       , "■ <total0>.<total1>.<total2>.<total3> "
+                                          , "--Low"    , "40"
+                                          , "--High"   , "85"
+                                          , "-m"       , "2"
+                                          , "--normal" , "#b0bdbd"
+                                          , "--high"   , "#ef9a9a"
+                                          ] 10
+
+                    , Run Memory          [ "-t"       , "□ <usedratio>%  "
+                                          , "--Low"    , "40"
+                                          , "--High"   , "90"
+                                          , "-m"       , "2"
+                                          , "--normal" , "#b0bdbd"
+                                          , "--high"   , "#ef9a9a"
+                                          ] 10
+                    , Run BatteryP        ["CMB1"]
+                                          [ "-t"       , "⌇ <acstatus>  "
+                                          , "--Low"    , "20"
+                                          , "--High"   , "80"
+                                          , "--low"    , "#ef9a9a"
+                                          , "--normal" , "#b0bdbd"
+                                          , "--"
+                                                , "-o" , "<left>% (<timeleft>)"
+                                                , "-O" , "Charging <left>%"
+                                                , "-i" , "<left>%"
+                                          ] 50
+                    , Run Date "%a %m/%d %H:%M" "date" 10
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = " %StdinReader% }{ %multicpu%%memory%%battery%<fc=#ece391>%date%</fc> "
+       }
+

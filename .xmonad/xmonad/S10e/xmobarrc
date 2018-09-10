@@ -1,0 +1,49 @@
+-- vim: ft=haskell
+Config { font = "xft:Migu 1M:size=12.5"
+       , bgColor = "#1c1c1c"
+       , fgColor = "#404040"
+       , position = TopSize C 100 40
+       -- , position = Static { xpos = 7 , ypos = 0, width = 1011, height = 25 }
+       , lowerOnStart = False
+       , overrideRedirect = False
+       , borderColor = "#4e4e4e"
+       , commands = [ Run Network "wlan0" [ "-t"       , "⇩<rx>  ⇧<tx>  "
+                                          , "-L"       , "40"
+                                          , "-H"       , "200"
+                                          , "-m"       , "3"
+                                          , "--normal" , "#b0bdbd"
+                                          , "--high"   , "#a5d6a7"
+                                          ] 10
+                    , Run MultiCpu        [ "-t"       , "■ <total0>.<total1>  "
+                                          , "-L"       , "40"
+                                          , "-H"       , "85"
+                                          , "-m"       , "2"
+                                          , "--normal" , "#b0bdbd"
+                                          , "--high"   , "#ef9a9a"
+                                          ] 10
+
+                    , Run Memory          [ "-t"       , "□ <usedratio>%  "
+                                          , "-L"       , "40"
+                                          , "-H"       , "90"
+                                          , "-m"       , "2"
+                                          , "--normal" , "#b0bdbd"
+                                          , "--high"   , "#ef9a9a"
+                                          ] 10
+                    , Run Battery         [ "-t"       , "⌇ <acstatus> <left>% "
+                                          , "-L"       , "20"
+                                          , "-H"       , "80"
+                                          , "--low"    , "#ef9a9a"
+                                          , "--normal" , "#b0bdbd"
+                                          , "--"
+                                                , "-o" , "(<timeleft>)"
+                                                , "-O" , "Charging"
+                                                , "-i" , ""
+                                          ] 50
+                    , Run Date "%a %m/%d %H:%M" "date" 10
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = " %StdinReader% }{ %multicpu%%memory%%wlan0%%battery%<fc=#ece391>%date%</fc> "
+       }
+
