@@ -48,14 +48,22 @@ function mkcd() {
 
 # prompt
 autoload -Uz vcs_info
+autoload -Uz colors
+colors
+
 setopt prompt_subst
-zstyle ':vcs_info:*' formats '[%F{green}%b%f]'
-zstyle ':vcs_info:*' actionformats '[%F{green}%b%f(%F{red}%a%f)]'
-precmd() { vcs_info }
 
-PROMPT='[%n %F{green}%~%f]%# '
-RPROMPT=''
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{green}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{magenta}+"
+zstyle ':vcs_info:*' formats "%F{cyan}%c%u(%b)%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
 
+precmd () { vcs_info }
+
+PROMPT='%{$fg[red]%}[%n@%m]%{$reset_color%}'
+PROMPT=$PROMPT' ${vcs_info_msg_0_} %{${fg[red]}%}%}$%{${reset_color}%} '
+RPROMPT='%{${fg[red]}%}[%~]%{${reset_color}%}'
 # history
 HISTFILE=~/.zsh_history
 HISTSIZE=10000000
