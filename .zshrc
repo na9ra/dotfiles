@@ -61,9 +61,10 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 
 precmd () { vcs_info }
 
-PROMPT='%{$fg[red]%}[%n@%m]%{$reset_color%}'
-PROMPT=$PROMPT' ${vcs_info_msg_0_} %{${fg[red]}%}%}$%{${reset_color}%} '
-RPROMPT='%{${fg[red]}%}[%~]%{${reset_color}%}'
+#PROMPT='%{$fg[red]%}[%n@%m]%{$reset_color%}'
+#PROMPT=$PROMPT' ${vcs_info_msg_0_} %{${fg[red]}%}%}$%{${reset_color}%} '
+PROMPT='[%n %F{green}%~%f]%# '
+RPROMP='%{${fg[red]}%}[%~]%{${reset_color}%}'
 # history
 HISTFILE=~/.zsh_history
 HISTSIZE=10000000
