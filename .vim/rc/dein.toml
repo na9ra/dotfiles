@@ -17,10 +17,6 @@ repo = 'tomasr/molokai'
 [[plugins]]
 repo = 'jacoborus/tender.vim'
 
-
-[[plugins]]
-repo = 'nanotech/jellybeans.vim'
-
 [[plugins]]
 repo = 'tpope/vim-obsession'
 
@@ -37,9 +33,6 @@ repo = 'pangloss/vim-javascript'
 repo = 'itchyny/vim-haskell-indent'
 
 [[plugins]]
-repo = 'morhetz/gruvbox'
-
-[[plugins]]
 repo = 'kovisoft/slimv'
 
 [[plugins]]
@@ -47,3 +40,6 @@ repo = 'tpope/vim-markdown'
 
 [[plugins]]
 repo = 'rust-lang/rust.vim'
+
+[[plugins]]
+repo = 'morhetz/gruvbox'
