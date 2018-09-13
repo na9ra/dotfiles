@@ -37,9 +37,6 @@ repo = 'pangloss/vim-javascript'
 repo = 'itchyny/vim-haskell-indent'
 
 [[plugins]]
-repo = 'morhetz/gruvbox'
-
-[[plugins]]
 repo = 'kovisoft/slimv'
 
 [[plugins]]
