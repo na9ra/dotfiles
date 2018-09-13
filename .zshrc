@@ -54,17 +54,14 @@ colors
 setopt prompt_subst
 
 zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "%F{green}!"
+zstyle ':vcs_info:git:*' stagedstr "%F{red}!"
 zstyle ':vcs_info:git:*' unstagedstr "%F{magenta}+"
 zstyle ':vcs_info:*' formats "%F{cyan}%c%u(%b)%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 
 precmd () { vcs_info }
-
-#PROMPT='%{$fg[red]%}[%n@%m]%{$reset_color%}'
-#PROMPT=$PROMPT' ${vcs_info_msg_0_} %{${fg[red]}%}%}$%{${reset_color}%} '
-PROMPT='[%n %F{green}%~%f]%# '
-RPROMP='%{${fg[red]}%}[%~]%{${reset_color}%}'
+PROMPT='[%n %F{green}%~%f $vcs_info_msg_0_]%# '
+RPROMPT=''
 # history
 HISTFILE=~/.zsh_history
 HISTSIZE=10000000
