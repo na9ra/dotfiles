@@ -102,3 +102,5 @@ set background=dark
 colorscheme gruvbox
 syntax on
 "let g:javascript_plugin_jsdoc = 1
+
+vmap <C-c> :w !xsel -ib<CR><CR>
